@@ -122,14 +122,8 @@ class ViewController: UIViewController {
     
     private func UnitChange() {
         if db.getCountProduct() != 0 {
-            if priceUnitField.isEnabled {
-                priceUnitField.text = "\"\(priceUnitField.text!)\""
-                priceUnitField.isEnabled = false
-            }
-            if quantityUnitField.isEnabled {
-                quantityUnitField.text = "\"\(quantityUnitField.text!)\""
-                quantityUnitField.isEnabled = false
-            }
+            priceUnitField.isEnabled = false
+            quantityUnitField.isEnabled = false
         }
     }
     
