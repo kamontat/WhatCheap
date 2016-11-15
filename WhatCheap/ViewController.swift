@@ -122,7 +122,9 @@ class ViewController: UIViewController {
     
     private func UnitChange() {
         if db.getCountProduct() != 0 {
+            priceUnitField.borderStyle = .none
             priceUnitField.isEnabled = false
+            quantityUnitField.borderStyle = .none
             quantityUnitField.isEnabled = false
         }
     }
