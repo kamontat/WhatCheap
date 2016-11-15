@@ -41,14 +41,19 @@ class ViewController: UIViewController {
             return
         }
         
-        let name = nameField.text!
         let price = Int(priceField.text!)!
         let priceUnit = priceUnitField.text!
         let quantity = Int(quantityField.text!)!
         let quantityUnit = quantityUnitField.text!
         
-        db.add(product: Product(name: name, price: price, priceUnit: priceUnit, quantity: quantity, quantityUnit: quantityUnit))
+        if nameField.text == nil || nameField.text! == "" {
+            db.add(product: Product(price: price, priceUnit: priceUnit, quantity: quantity, quantityUnit: quantityUnit))
             
+        } else {
+            let name = nameField.text!
+            db.add(product: Product(name: name, price: price, priceUnit: priceUnit, quantity: quantity, quantityUnit: quantityUnit))
+        }
+        
         db.printAllProduct()
         print("")
         
@@ -73,13 +78,8 @@ class ViewController: UIViewController {
     }
     
     private func checkBlankField() -> Bool {
-        var errorText: String = "Please Enter "
+        var errorText: String = "Enter "
         var isError: Bool = false
-        
-        if nameField.text == nil || nameField.text == "" {
-            errorText.append("\"Name\", ")
-            isError = true
-        }
         
         if priceField.text == nil || priceField.text == "" {
             errorText.append("\"Price\", ")
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
         }
         
         if isError {
-            let error = UIAlertController(title: "Must enter all 3 field", message: errorText, preferredStyle: .alert)
+            let error = UIAlertController(title: "Must enter All necessary field", message: errorText, preferredStyle: .alert)
             error.addAction(UIAlertAction(title: "Understand!", style: .cancel))
             self.present(error, animated: true)
         }
@@ -112,7 +112,7 @@ class ViewController: UIViewController {
             }
         } else {
             priceField.text = ""
-            priceUnitField.text = ""
+            quantityField.text = ""
             
             if isUnitCanChange() {
                 priceUnitField.text = "Baht"

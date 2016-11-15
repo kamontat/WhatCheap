@@ -9,6 +9,7 @@
 import Foundation
 
 class Product {
+    static var i = 1;
     var name: String
     var price: Int
     var priceUnit: String
@@ -19,6 +20,15 @@ class Product {
         get {
             return Double(price) / Double(quantity)
         }
+    }
+    
+    init(price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
+        self.name = "Unname Product(\(Product.i))"
+        self.price = price
+        self.priceUnit = priceUnit
+        self.quantity = quantity
+        self.quantityUnit = quantityUnit
+        Product.i += 1
     }
     
     init(name: String, price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
