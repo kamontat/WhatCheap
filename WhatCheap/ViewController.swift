@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func nameTyping(_ sender: UITextField) {
-        print(nameField.text!)
         checkEquals()
     }
     
