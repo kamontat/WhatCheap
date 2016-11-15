@@ -31,6 +31,10 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    @IBAction func nameTyping(_ sender: UITextField) {
+        print(nameField.text!)
+        checkEquals()
+    }
     
     @IBAction func addAction(_ sender: UIButton) {
         if checkBlankField() {
@@ -49,7 +53,7 @@ class ViewController: UIViewController {
         print("")
         
         resetField()
-        isUnitCanChange()
+        UnitChange()
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
@@ -95,7 +99,29 @@ class ViewController: UIViewController {
         return isError
     }
     
-    private func isUnitCanChange() {
+    private func checkEquals() {
+        let name = nameField.text!
+        let productTemp = db.productEquals(otherName: name)
+        // load all data
+        if productTemp != nil {
+            priceField.text = String(productTemp!.price)
+            quantityField.text = String(productTemp!.quantity)
+            if isUnitCanChange() {
+                priceUnitField.text = productTemp!.priceUnit
+                quantityUnitField.text = productTemp!.quantityUnit
+            }
+        } else {
+            priceField.text = ""
+            priceUnitField.text = ""
+            
+            if isUnitCanChange() {
+                priceUnitField.text = "Baht"
+                quantityUnitField.text = "Piece"
+            }
+        }
+    }
+    
+    private func UnitChange() {
         if db.getCountProduct() != 0 {
             if priceUnitField.isEnabled {
                 priceUnitField.text = "\"\(priceUnitField.text!)\""
@@ -106,6 +132,10 @@ class ViewController: UIViewController {
                 quantityUnitField.isEnabled = false
             }
         }
+    }
+    
+    private func isUnitCanChange() -> Bool {
+        return quantityUnitField.isEnabled || priceUnitField.isEnabled
     }
     
     private func resetField() {

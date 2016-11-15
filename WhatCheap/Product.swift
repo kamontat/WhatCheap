@@ -29,6 +29,14 @@ class Product {
         self.quantityUnit = quantityUnit
     }
     
+    func equals(other: Product) -> Bool {
+        return other.name == name
+    }
+    
+    func equals(otherName: String) -> Bool {
+        return otherName == name
+    }
+    
     func toString() -> String {
         return "\(name): \(price) \(priceUnit), \(quantity) \(quantityUnit) :: \(average) \(priceUnit)/\(quantityUnit)"
     }

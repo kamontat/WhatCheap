@@ -20,7 +20,32 @@ class Database {
         return db
     }
     
+    func productEquals(otherName: String) -> Product? {
+        for product in products {
+            if product.equals(otherName: otherName) {
+                return product
+            }
+        }
+        return nil
+    }
+    
+    func indexEquals(otherName: String) -> Int {
+        var i = 0
+        for product in products {
+            if product.equals(otherName: otherName) {
+                return i
+            }
+            i += 1
+        }
+        return -1
+    }
+    
     func add(product: Product) {
+        let i = indexEquals(otherName: product.name)
+        if i != -1 {
+            products.remove(at: i)
+        }
+        
         products.append(product)
     }
     
