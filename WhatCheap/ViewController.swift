@@ -39,10 +39,12 @@ class ViewController: UIViewController {
         print("")
         
         resetField()
+        hiddenKeyboard()
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
         db.removeAll()
+        hiddenKeyboard()
     }
     
     private func setBorder() {
@@ -61,18 +63,18 @@ class ViewController: UIViewController {
         var errorText: String = "Please Enter "
         var isError: Bool = false
         
-        if nameField.text == nil {
-            errorText.append("\"Name\" ")
+        if nameField.text == nil || nameField.text == "" {
+            errorText.append("\"Name\", ")
             isError = true
         }
         
-        if priceField.text == nil {
-            errorText.append("\"Price\" ")
+        if priceField.text == nil || priceField.text == "" {
+            errorText.append("\"Price\", ")
             isError = true
         }
         
-        if quantityField.text == nil {
-            errorText.append("\"Quantity\" ")
+        if quantityField.text == nil || quantityField.text == ""{
+            errorText.append("\"Quantity\", ")
             isError = true
         }
         
@@ -88,5 +90,11 @@ class ViewController: UIViewController {
         nameField.text = nil
         priceField.text = nil
         quantityField.text = nil
+    }
+    
+    private func hiddenKeyboard() {
+        nameField.resignFirstResponder()
+        priceField.resignFirstResponder()
+        quantityField.resignFirstResponder()
     }
 }
