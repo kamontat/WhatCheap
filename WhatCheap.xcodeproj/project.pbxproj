@@ -15,6 +15,8 @@
 		5335479C1DDAFB3B00099D52 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5335479B1DDAFB3B00099D52 /* HistoryViewController.swift */; };
 		533547A11DDAFD5000099D52 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 5335479F1DDAFD5000099D52 /* history.png */; };
 		533547A21DDAFD5000099D52 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 533547A01DDAFD5000099D52 /* home.png */; };
+		53613AD21DDB348600F8C3C3 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53613AD11DDB348600F8C3C3 /* Product.swift */; };
+		53613AD41DDB370100F8C3C3 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53613AD31DDB370100F8C3C3 /* Database.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		5335479B1DDAFB3B00099D52 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		5335479F1DDAFD5000099D52 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		533547A01DDAFD5000099D52 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		53613AD11DDB348600F8C3C3 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		53613AD31DDB370100F8C3C3 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				533547A31DDAFD5500099D52 /* resource */,
+				53613AD31DDB370100F8C3C3 /* Database.swift */,
+				53613AD11DDB348600F8C3C3 /* Product.swift */,
 				533547871DDAFA9D00099D52 /* AppDelegate.swift */,
 				533547891DDAFA9D00099D52 /* ViewController.swift */,
 				5335479B1DDAFB3B00099D52 /* HistoryViewController.swift */,
@@ -157,7 +163,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5335479C1DDAFB3B00099D52 /* HistoryViewController.swift in Sources */,
+				53613AD21DDB348600F8C3C3 /* Product.swift in Sources */,
 				533547881DDAFA9D00099D52 /* AppDelegate.swift in Sources */,
+				53613AD41DDB370100F8C3C3 /* Database.swift in Sources */,
 				5335478A1DDAFA9D00099D52 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
