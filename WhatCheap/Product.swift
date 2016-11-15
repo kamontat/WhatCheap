@@ -11,7 +11,9 @@ import Foundation
 class Product {
     var name: String
     var price: Int
+    var priceUnit: String
     var quantity: Int
+    var quantityUnit: String
     
     var average: Double {
         get {
@@ -19,13 +21,15 @@ class Product {
         }
     }
     
-    init(name: String, price: Int, quantity: Int) {
+    init(name: String, price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
         self.name = name
         self.price = price
+        self.priceUnit = priceUnit
         self.quantity = quantity
+        self.quantityUnit = quantityUnit
     }
     
     func toString() -> String {
-        return "\(name): \(price) , \(quantity)"
+        return "\(name): \(price) \(priceUnit), \(quantity) \(quantityUnit) :: \(average) \(priceUnit)/\(quantityUnit)"
     }
 }

@@ -28,9 +28,13 @@ class Database {
         products.removeAll()
     }
     
-    func getAllProduct() -> [Product] {
-        return products
+    func getCountProduct() -> Int {
+        return products.count
     }
+    
+//    func getAllProduct() -> [Product] {
+//        return products
+//    }
     
     func printAllProduct() {
         products.forEach { product in

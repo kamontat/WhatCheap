@@ -14,12 +14,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var priceField: UITextField!
+    @IBOutlet weak var priceUnitField: UITextField!
     @IBOutlet weak var quantityField: UITextField!
+    @IBOutlet weak var quantityUnitField: UITextField!
     
     let db = Database.getDatabase()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hiddenKeyboardWhenTappedAround()
         // Do any additional setup after loading the view, typically from a nib.
         setBorder()
     }
@@ -34,17 +37,23 @@ class ViewController: UIViewController {
             return
         }
         
-        db.add(product: Product(name: nameField.text!, price: Int(priceField.text!)!, quantity: Int(quantityField.text!)!))
+        let name = nameField.text!
+        let price = Int(priceField.text!)!
+        let priceUnit = priceUnitField.text!
+        let quantity = Int(quantityField.text!)!
+        let quantityUnit = quantityUnitField.text!
+        
+        db.add(product: Product(name: name, price: price, priceUnit: priceUnit, quantity: quantity, quantityUnit: quantityUnit))
+            
         db.printAllProduct()
         print("")
         
         resetField()
-        hiddenKeyboard()
+        isUnitCanChange()
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
         db.removeAll()
-        hiddenKeyboard()
     }
     
     private func setBorder() {
@@ -86,15 +95,33 @@ class ViewController: UIViewController {
         return isError
     }
     
+    private func isUnitCanChange() {
+        if db.getCountProduct() != 0 {
+            if priceUnitField.isEnabled {
+                priceUnitField.text = "\"\(priceUnitField.text!)\""
+                priceUnitField.isEnabled = false
+            }
+            if quantityUnitField.isEnabled {
+                quantityUnitField.text = "\"\(quantityUnitField.text!)\""
+                quantityUnitField.isEnabled = false
+            }
+        }
+    }
+    
     private func resetField() {
         nameField.text = nil
         priceField.text = nil
         quantityField.text = nil
     }
-    
-    private func hiddenKeyboard() {
-        nameField.resignFirstResponder()
-        priceField.resignFirstResponder()
-        quantityField.resignFirstResponder()
+}
+
+extension UIViewController {
+    func hiddenKeyboardWhenTappedAround() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardView))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboardView() {
+        view.endEditing(true)
     }
 }
