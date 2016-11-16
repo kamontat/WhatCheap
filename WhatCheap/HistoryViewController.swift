@@ -9,15 +9,16 @@
 import UIKit
 
 class HistoryViewController: UITableViewController {
+    private var db: Database = Database.getDatabase()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,24 +29,24 @@ class HistoryViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return db.getCountProduct()
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell: CustomCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomCell
+        
+        let product = db.getProduct(index: indexPath.row)
+        
+        cell.nameLb.text = product.name
+        cell.detailLb.text = product.getCostString()
+        cell.averageLb.text = product.getAverageString()
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -55,7 +56,7 @@ class HistoryViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -63,9 +64,9 @@ class HistoryViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }    
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -91,5 +92,11 @@ class HistoryViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+class CustomCell: UITableViewCell {
+    @IBOutlet weak var nameLb: UILabel!
+    @IBOutlet weak var detailLb: UILabel!
+    @IBOutlet weak var averageLb: UILabel!
+    
 }

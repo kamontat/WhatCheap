@@ -18,7 +18,8 @@ class Product {
     
     var average: Double {
         get {
-            return Double(price) / Double(quantity)
+            let average = String(format: "%.2f", Double(price) / Double(quantity))
+            return Double(average)!
         }
     }
     
@@ -47,7 +48,15 @@ class Product {
         return otherName == name
     }
     
+    func getCostString() -> String {
+        return "\(price) \(priceUnit) : \(quantity) \(quantityUnit)"
+    }
+    
+    func getAverageString () -> String {
+        return "\(average) \(priceUnit)/\(quantityUnit)"
+    }
+    
     func toString() -> String {
-        return "\(name): \(price) \(priceUnit), \(quantity) \(quantityUnit) :: \(average) \(priceUnit)/\(quantityUnit)"
+        return "\(name): \(getCostString()) :: \(getAverageString())"
     }
 }

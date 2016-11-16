@@ -47,10 +47,19 @@ class Database {
         }
         
         products.append(product)
+        
+        // app will very slow when more product
+        products.sort { (product1, product2) -> Bool in
+            return product1.average < product2.average
+        }
     }
     
     func removeAll() {
         products.removeAll()
+    }
+    
+    func getProduct(index: Int) -> Product {
+        return products[index]
     }
     
     func getCountProduct() -> Int {
