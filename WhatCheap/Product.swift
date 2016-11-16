@@ -11,9 +11,9 @@ import Foundation
 class Product: CustomStringConvertible {
     static var i = 1;
     var name: String
-    var price: Int
+    var price: Double
     var priceUnit: String
-    var quantity: Int
+    var quantity: Double
     var quantityUnit: String
     
     var timeStamp: String
@@ -25,12 +25,12 @@ class Product: CustomStringConvertible {
     
     var average: Double {
         get {
-            let average = String(format: "%.2f", Double(price) / Double(quantity))
+            let average = String(format: "%.2f", price / quantity)
             return Double(average)!
         }
     }
     
-    init(price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
+    init(price: Double, priceUnit: String, quantity: Double, quantityUnit: String) {
         self.name = "Unname Product(\(Product.i))"
         self.price = price
         self.priceUnit = priceUnit
@@ -41,7 +41,7 @@ class Product: CustomStringConvertible {
         timeStamp = Product.getCurrentTime()
     }
     
-    init(name: String, price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
+    init(name: String, price: Double, priceUnit: String, quantity: Double, quantityUnit: String) {
         self.name = name
         self.price = price
         self.priceUnit = priceUnit

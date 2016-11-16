@@ -39,7 +39,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     @IBAction func nameTyping(_ sender: UITextField) {
         checkEquals()
     }
@@ -49,9 +48,9 @@ class ViewController: UIViewController {
             return
         }
         
-        let price = Int(priceField.text!)!
+        let price = Double(priceField.text!)!
         let priceUnit = priceUnitField.text!
-        let quantity = Int(quantityField.text!)!
+        let quantity = Double(quantityField.text!)!
         let quantityUnit = quantityUnitField.text!
         
         if nameField.text == nil || nameField.text! == "" {
@@ -76,6 +75,7 @@ class ViewController: UIViewController {
             self.db.removeAll()
             
             let alert = UIAlertController(title: "Remove successful", message: "all products are gone", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             self.present(alert, animated: true)
         }))
         question.addAction(UIAlertAction(title: "No", style: .cancel))
