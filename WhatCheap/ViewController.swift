@@ -37,6 +37,9 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
     @IBAction func nameTyping(_ sender: UITextField) {
         checkEquals()
     }

@@ -54,6 +54,7 @@ class HistoryViewController: UITableViewController {
         cell.detailLb.text = product.getCostString()
         cell.averageLb.text = product.getAverageString()
 
+
         return cell
     }
 
@@ -75,6 +76,14 @@ class HistoryViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let product = db.getProduct(index: indexPath.row)
+        
+        let alert = UIAlertController(title: product.name, message: product.timeStamp, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK.", style: .cancel))
+        self.present(alert, animated: true)
     }
 
     /*
@@ -107,5 +116,4 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var nameLb: UILabel!
     @IBOutlet weak var detailLb: UILabel!
     @IBOutlet weak var averageLb: UILabel!
-    
 }

@@ -8,13 +8,20 @@
 
 import Foundation
 
-class Product {
+class Product: CustomStringConvertible {
     static var i = 1;
     var name: String
     var price: Int
     var priceUnit: String
     var quantity: Int
     var quantityUnit: String
+    
+    var timeStamp: String
+    
+    
+    var description: String {
+        return "\(name): \(getCostString()) :: \(getAverageString())"
+    }
     
     var average: Double {
         get {
@@ -30,6 +37,8 @@ class Product {
         self.quantity = quantity
         self.quantityUnit = quantityUnit
         Product.i += 1
+        
+        timeStamp = Product.getCurrentTime()
     }
     
     init(name: String, price: Int, priceUnit: String, quantity: Int, quantityUnit: String) {
@@ -38,6 +47,8 @@ class Product {
         self.priceUnit = priceUnit
         self.quantity = quantity
         self.quantityUnit = quantityUnit
+        
+        timeStamp = Product.getCurrentTime()
     }
     
     func equals(other: Product) -> Bool {
@@ -56,7 +67,20 @@ class Product {
         return "\(average) \(priceUnit)/\(quantityUnit)"
     }
     
-    func toString() -> String {
-        return "\(name): \(getCostString()) :: \(getAverageString())"
+    
+    /// get current time in format "MM/DD/YY, HH:MM AM"
+    ///
+    /// - Returns: String of crrent date
+    class func getCurrentTime() -> String {
+        // get the current date and time
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .long
+        formatter.dateStyle = .long
+        
+        // get the date time String from the date object
+        return formatter.string(from: currentDateTime)
     }
 }

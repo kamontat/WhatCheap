@@ -55,7 +55,6 @@ class Database {
     }
     
     func removeAt(index: Int) {
-        print(products[index])
         products.remove(at: index)
     }
     
@@ -77,7 +76,7 @@ class Database {
     
     func printAllProduct() {
         products.forEach { product in
-            print(product.toString())
+            print(product)
         }
     }
 }
