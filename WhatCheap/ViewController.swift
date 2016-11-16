@@ -77,6 +77,9 @@ class ViewController: UIViewController {
             let alert = UIAlertController(title: "Remove successful", message: "all products are gone", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             self.present(alert, animated: true)
+            
+            self.updateUnitLb()
+            self.updateCountProducts()
         }))
         question.addAction(UIAlertAction(title: "No", style: .cancel))
         self.present(question, animated: true)
@@ -144,6 +147,11 @@ class ViewController: UIViewController {
             priceUnitField.isEnabled = false
             quantityUnitField.borderStyle = .none
             quantityUnitField.isEnabled = false
+        } else {
+            priceUnitField.borderStyle = .roundedRect
+            priceUnitField.isEnabled = true
+            quantityUnitField.borderStyle = .roundedRect
+            quantityUnitField.isEnabled = true
         }
     }
     
