@@ -68,7 +68,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
-        db.removeAll()
+        let question = UIAlertController(title: "Delete?", message: "Do you sure to delete all product?", preferredStyle: .alert)
+        question.addAction(UIAlertAction(title: "Yes!", style: .destructive, handler: { (action) in
+            self.db.removeAll()
+            
+            let alert = UIAlertController(title: "Remove successful", message: "all products are gone", preferredStyle: .alert)
+            self.present(alert, animated: true)
+        }))
+        question.addAction(UIAlertAction(title: "No", style: .cancel))
+        self.present(question, animated: true)
     }
     
     private func setBorder() {
