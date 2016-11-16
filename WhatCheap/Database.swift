@@ -54,6 +54,10 @@ class Database {
         }
     }
     
+    func removeAt(index: Int) {
+        products.remove(at: index)
+    }
+    
     func removeAll() {
         products.removeAll()
     }

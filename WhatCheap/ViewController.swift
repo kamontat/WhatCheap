@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var quantityField: UITextField!
     @IBOutlet weak var quantityUnitField: UITextField!
     
+    @IBOutlet weak var countProductLb: UILabel!
+    
     let db = Database.getDatabase()
 
     override func viewDidLoad() {
@@ -25,6 +27,10 @@ class ViewController: UIViewController {
         hiddenKeyboardWhenTappedAround()
         // Do any additional setup after loading the view, typically from a nib.
         setBorder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        updateCountProducts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,8 +62,9 @@ class ViewController: UIViewController {
         db.printAllProduct()
         print("")
         
-        resetField()
-        UnitChange()
+        restartField()
+        updateUnitLb()
+        updateCountProducts()
     }
     
     @IBAction func resetAction(_ sender: UIButton) {
@@ -120,7 +127,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private func UnitChange() {
+    private func updateUnitLb() {
         if db.getCountProduct() != 0 {
             priceUnitField.borderStyle = .none
             priceUnitField.isEnabled = false
@@ -133,7 +140,11 @@ class ViewController: UIViewController {
         return quantityUnitField.isEnabled || priceUnitField.isEnabled
     }
     
-    private func resetField() {
+    private func updateCountProducts() {
+        countProductLb.text = "(\(db.getCountProduct()))"
+    }
+    
+    private func restartField() {
         nameField.text = nil
         priceField.text = nil
         quantityField.text = nil

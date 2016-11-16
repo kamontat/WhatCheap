@@ -100,12 +100,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(0)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBM-Fp-hN5">
+                                <rect key="frame" x="39" y="20" width="22" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="home.png" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="addBtn" destination="Rus-2B-Qbd" id="pTd-7o-cwb"/>
+                        <outlet property="countProductLb" destination="eBM-Fp-hN5" id="6I3-BY-Oiz"/>
                         <outlet property="nameField" destination="ZmZ-BT-S0k" id="hRd-Pf-M5P"/>
                         <outlet property="priceField" destination="Iu0-uX-HJV" id="6p9-x5-akc"/>
                         <outlet property="priceUnitField" destination="9hG-Ij-eKV" id="vLY-de-b1Z"/>
